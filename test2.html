@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let w1 = window.opener
+            let w2 = window
+
+            Object.defineProperty(w2, "inputValue", {
+                set(v){
+                    console.log("w2.inputValue was set!:" + v)
+                    w1.document.getElementById("input1").value = v
+                }
+            });
+
+            function func(e){
+                w2.inputValue = e.target.value
+            }
+        </script>
+    </head>
+    <body>
+        input2 :
+        <input type="text" id="input2" oninput="func(event)">
+    </body>
+</html>
